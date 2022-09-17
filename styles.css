@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap');
+
+/* For declaring global variables, i.e. now we can use these colors thoughout our css using these variables */
+:root{
+    --pale-blue: hsl(225, 100%, 94%);
+    --bright-blue: hsl(245, 75%, 52%);
+    --Very-pale-blue: hsl(225, 100%, 98%);
+    --desaturated-blue: hsl(224, 23%, 55%);
+    --dark-blue: hsl(223, 47%, 23%);
+}
+
+/* Everything else than the card in our case is just "body" */
+/* Hence our selector will be the body tag itself: */
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(./images/pattern-background-desktop.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--pale-blue);
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 16px;
+}
+
+/* class selector */
+.card{ 
+    width: 450px;
+    background-color: white;
+    /* We see the text on the Card is having this pale blue color so: */
+    color: var(--desaturated-blue);
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 50px auto;
+}
+.title{
+    color: var(--dark-blue);
+    font-weight: 900;
+    font-size: 32px;
+    text-align: center;
+}
+.vit-img{
+    width: 100%;
+}
+.container{
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    font-size: 18px;
+}
+
+.container > *{
+    margin: 13px 0px;
+} 
+
+input[type=submit]{
+    width: 100%;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: .25s ease-in;
+    border-radius: 12px;
+    font-weight: 700;
+    border: none;
+    background-color: var(--bright-blue);
+    padding: 1rem 0;
+    color: white;
+    box-shadow: 0 20px 30px -8px rgb(197 189 245); 
+}
+input[type=submit]:hover{
+    opacity: 0.8;
+}
+
+input[type=text], input[type=email], input[type=password]{
+    margin: 15px;
+    padding: 8px;
+    border: none;
+    border-bottom: 2px solid blue;
+    width: 40%;
+    transition: width .25s  ease-in;
+    border-radius: 6px;
+}
+
+input[type=text]:focus{
+    outline: none;
+    width: 100%;
+} 
+input[type=email]:focus{
+    outline: none;
+    width: 100%;
+} 
+input[type=password]:focus{
+    outline: none;
+    width: 100%;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    font-size: 14pt;
+    padding:0 20px 25px 20px;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIT Event Registration</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/vit-img.ico">
+    <script>
+        const submitButton = document.getElementById("submit");
+        // To validate atleast 5 unique Characters in the password we use Js
+        Array.prototype.contains = function(v){
+            for(var i=0; i< this.length; i++){
+                if(this[i] === v) return true;
+            }
+            return false;
+        }
+        Array.prototype.unique = function(){
+            var arr = [];
+            for(var i=0; i< this.length; i++){
+                if(!arr.contains(this[i])){
+                    arr.push(this[i]);
+                }
+            }
+            return arr;
+        };
+
+        function validateForm(){
+            //wrong pwd regex: ^(?=(.*[A-Z]){3})(?=(.*[a-z]){3})(?=(.*\d){3})(?=(.*[~!@#\$%^\-_=+\[\]\{\}/;:,\.\?*]){3})(?!.*\s).{10,100}$"
+            var pwd = document.registration.pwd.value;
+            // var pwd_id = document.getElementById("pwd");
+            let regex1 = /(?=(.*[A-Z]))(?=(.*[a-z]))(?=(.*\d))(?!.*\s).{10,100}/i;
+            let regex2 = /(?=(.*[A-Z]))(?=(.*[a-z]))(?=(.*[~!@#\$%^\-_=+\[\]\{\}/;:,\.\?*]))(?!.*\s).{10,100}/i;
+            let regex3 = /(?=(.*[A-Z]))(?=(.*[~!@#\$%^\-_=+\[\]\{\}/;:,\.\?*]))(?=(.*\d))(?!.*\s).{10,100}/i;
+            let regex4 = /(?=(.*[a-z]))(?=(.*[~!@#\$%^\-_=+\[\]\{\}/;:,\.\?*]))(?=(.*\d))(?!.*\s).{10,100}/i;
+            let regex5 = /(?=(.*[A-Z]))(?=(.*[a-z]))(?=(.*\d))(?=(.*[~!@#\$%^\-_=+\[\]\{\}/;:,\.\?*]))(?!.*\s).{10,100}/i;
+            
+            if(((regex1.test(pwd)) || (regex2.test(pwd)) || (regex3.test(pwd)) || (regex4.test(pwd))) && (pwd.split("").unique().length >= 5)){
+                return true;
+            }else{
+                //pwd_id.style.border = '2px solid';
+                //pwd_id.style.borderColor = 'red';
+                alert("Password should have 5 unique characters and atleast 3 of the following: uppercase, lowercase, numeric or spl character along with the length between 10 to 100");
+                return false;
+            }
+        };
+        // submitButton.addEventListener('click', e=>{
+        //     e.preventDefault();
+        //     validateForm();
+        // });
+    </script>
+</head>
+<body>
+    <div class="card">
+        <img class="vit-img" src="images/vit-img5.jpeg" alt="vit logo">
+        <div class="container">
+            <h2 class="title">Login Page</h2>
+            <form name="registration" onsubmit="return validateForm()" action="confetti.html" method="post">
+                <div class="inputs">
+                    <input type="text" name="name" title="Your Name" placeholder="Your Name" required>
+                    <input type="text" name="zip" pattern=".{5}" title="Zip of 5 Characters" placeholder="Zip Code" required>
+                    <input type="email" name="email" pattern="[a-z]+[\.][a-z0-9]+@vitstudent.ac.in" title="Your VIT email" placeholder="Email" required>
+                    <input type="password" name="pwd" id="pwd"  title="password" placeholder="Password" required>
+                    <input type="text" name="mobile" pattern="\d{10}" title="Mobile number of 10 digits" placeholder="Mobile" required>
+                </div>
+                <input type="submit" id="submit" value="submit">
+            </form>
+       </div>     
+    </div>
+</body>
+</html>
